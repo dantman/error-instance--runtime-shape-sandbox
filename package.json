@@ -17,6 +17,7 @@
     "concurrently": "^10.0.5"
   },
   "devDependencies": {
+    "vercel": "^62.0.0",
     "vite": "catalog:",
     "vite-plus": "catalog:"
   },

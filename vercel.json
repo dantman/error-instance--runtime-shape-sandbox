@@ -1,0 +1,12 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "vite",
+  "buildCommand": "pnpm run pack && pnpm run build",
+  "devCommand": "pnpm run dev --port $PORT",
+  "outputDirectory": "dist/",
+  "rewrites": [
+    { "source": "/", "destination": "/sandbox/index.html" },
+    { "source": "/analyze.mjs", "destination": "/lib/analyze.mjs" },
+    { "source": "/(.*)", "destination": "/sandbox/$1" }
+  ]
+}
