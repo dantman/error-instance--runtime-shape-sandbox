@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Error-instance runtime shape sandbox</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@variable&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="info">
+      <p>
+        This sandbox displays information about the shape of an Error instance in your JavaScript
+        runtime.
+      </p>
+      <div class="actions" hidden>
+        <button id="copy-error-info">Copy</button>
+      </div>
+    </div>
+    <textarea readonly id="error-info"></textarea>
+
+    <style>
+      /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+      html {
+        line-height: 1.15; /* 1 */
+        -webkit-text-size-adjust: 100%; /* 2 */
+      }
+      body {
+        margin: 0;
+        font-family:
+          "Inter",
+          -apple-system,
+          "Segoe UI",
+          Roboto,
+          "Helvetica Neue",
+          Arial,
+          sans-serif;
+      }
+      b,
+      strong {
+        font-weight: bolder;
+      }
+      button,
+      input,
+      optgroup,
+      select,
+      textarea {
+        font-family: inherit; /* 1 */
+        font-size: 100%; /* 1 */
+        line-height: 1.15; /* 1 */
+        margin: 0; /* 2 */
+      }
+      textarea {
+        overflow: auto;
+      }
+      [hidden] {
+        display: none;
+      }
+    </style>
+    <style>
+      html {
+        height: 100dvh;
+      }
+      html,
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+      body {
+        flex: 1 1 auto;
+        min-height: 0;
+        padding: 8px;
+      }
+
+      .info {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 8px;
+      }
+
+      #error-info {
+        flex: 1 auto;
+        font-family:
+          "JetBrains Mono", "Fira Code", "Cascadia Code", Consolas, Monaco, Menlo,
+          "DejaVu Sans Mono", monospace;
+      }
+    </style>
+    <script type="module">
+      import { errorInfo } from "/analyze.js";
+      const errorInfoElement = document.getElementById("error-info");
+      if (errorInfoElement) {
+        errorInfoElement.value = errorInfo;
+      }
+
+      const copyButton = document.getElementById("copy-error-info");
+      if (copyButton) {
+        let copyTimeout;
+        copyButton.addEventListener("click", () => {
+          navigator.clipboard.writeText(errorInfo);
+
+          copyButton.textContent = "Copied!";
+
+          clearTimeout(copyTimeout);
+          copyTimeout = setTimeout(() => {
+            copyButton.textContent = "Copy";
+          }, 2000);
+        });
+      }
+
+      const actions = document.querySelector(".actions");
+      if (actions) {
+        actions.hidden = false;
+      }
+    </script>
+  </body>
+</html>

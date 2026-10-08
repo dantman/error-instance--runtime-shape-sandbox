@@ -1,0 +1,31 @@
+{
+  "name": "error-instance-runtime-shape-sandbox",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "build": "vp build",
+    "pack": "vp pack",
+    "watch": "concurrently --names dev,build,pack,node \"vp dev\" \"vp build --watch\" \"vp pack --watch\" \"node --watch-preserve-output --watch-path=./dist/lib/ --watch dist/lib/index.mjs\"",
+    "dev": "vp dev",
+    "preview": "vp preview",
+    "format": "vp format",
+    "lint": "vp lint"
+  },
+  "dependencies": {
+    "concurrently": "^10.0.5"
+  },
+  "devDependencies": {
+    "vite": "catalog:",
+    "vite-plus": "catalog:"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "12.9.1",
+      "onFail": "download"
+    }
+  },
+  "packageManager": "pnpm@12.9.1"
+}
