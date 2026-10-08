@@ -1,0 +1,12 @@
+{
+  "name": "convex",
+  "license": "ISC",
+  "type": "module",
+  "scripts": {
+    "start": "convex dev --once && convex run test:test",
+    "dev": "convex dev"
+  },
+  "dependencies": {
+    "convex": "^1.46.0"
+  }
+}

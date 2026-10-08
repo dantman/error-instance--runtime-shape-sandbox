@@ -1,0 +1,13 @@
+{
+  "name": "miniflare-test",
+  "private": true,
+  "license": "ISC",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "start": "wrangler dev"
+  },
+  "devDependencies": {
+    "wrangler": "^4.148.0"
+  }
+}
