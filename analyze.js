@@ -67,19 +67,8 @@ function descriptorType(descriptor) {
  */
 function formatStack(stack) {
   if (typeof stack === "string") {
-    return (
-      stack
-        // Remove the directory paths from the stack trace lines so only the file names remain
-        // This runtime check is going to run in all sorts of JavaScript environments,
-        // including those that live on the filesystem and may have a cwd personal to the user
-        // This ensures that the stack trace is more portable/private and less dependent on the local filesystem structure
-        .replace(/(?:[A-Za-z0-9_.:-]+[\\/])*([A-Za-z0-9_.:-]+\.m?js)/g, "$1")
-        // This will probably leave a leading protocol in browser environments (e.g., "http://")
-        // Remove the leading protocol and domain, leaving only the path and file name
-        .replace(/[a-z]+:\/\/(?=[A-Za-z0-9_.:-]+(?:[\\/][A-Za-z0-9_.:-]+)*\.m?js)/g, "")
-        // Split the stack trace into individual lines so the JSON output is more readable
-        .split("\n")
-    );
+    // Split the stack trace into individual lines so the JSON output is more readable
+    return stack.split("\n");
   } else {
     try {
       // If the stack is not a string but is JSON stringifiable, we return it as-is wrapped in an object with a `$raw` property.
