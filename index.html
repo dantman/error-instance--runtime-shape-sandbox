@@ -13,10 +13,17 @@
   </head>
   <body>
     <div class="info">
-      <p>
-        This sandbox displays information about the shape of an Error instance in your JavaScript
-        runtime.
-      </p>
+      <div>
+        <p>
+          This sandbox displays information about the shape of an Error instance in your JavaScript
+          runtime.
+        </p>
+        <p>
+          To display this same information in a non-browser runtime, download the
+          <a href="analyze.mjs" id="download-analyze">analyze.mjs</a> ES module and run or import it
+          in your own runtime.
+        </p>
+      </div>
       <div class="actions" hidden>
         <button id="copy-error-info">Copy</button>
       </div>
@@ -117,6 +124,11 @@
       const actions = document.querySelector(".actions");
       if (actions) {
         actions.hidden = false;
+      }
+
+      const downloadAnalyzeLink = document.getElementById("download-analyze");
+      if (downloadAnalyzeLink) {
+        downloadAnalyzeLink.textContent = location.origin + "/analyze.mjs";
       }
     </script>
   </body>

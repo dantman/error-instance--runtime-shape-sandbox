@@ -7,7 +7,7 @@
   "scripts": {
     "build": "vp build",
     "pack": "vp pack",
-    "watch": "concurrently --names dev,build,pack,node \"vp dev\" \"vp build --watch\" \"vp pack --watch\" \"node --watch-preserve-output --watch-path=./dist/lib/ --watch dist/lib/index.mjs\"",
+    "watch": "concurrently --names dev,build,pack,node \"vp dev\" \"vp build --watch\" \"vp pack --watch\" \"node --watch-preserve-output --watch-path=./dist/lib/ --watch dist/lib/analyze.mjs\"",
     "dev": "vp dev",
     "preview": "vp preview",
     "format": "vp format",
